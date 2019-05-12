@@ -1,0 +1,28 @@
+#Zuul API Gateway 
+http://localhost:8765/{application-name}/{uri}
+
+original ->
+http://localhost:8000/currency-exchange/from/USD/to/INR
+Through zuul --->
+http://localhost:8765/currency-exchange-service/currency-exchange/from/USD/to/INR
+
+
+http://localhost:8100/currency-converter-feign/from/USD/to/INR/quantity/2
+http://localhost:8765/currency-conversion-service/currency-converter-feign/from/USD/to/INR/quantity/2
+
+All the request Url till now --->
+http://localhost:8761/
+http://localhost:8888/limits-service/default
+http://localhost:8001/currency-exchange/from/USD/to/INR
+http://localhost:8000/currency-exchange/from/USD/to/INR
+http://localhost:8100/currency-converter/from/USD/to/INR/quantity/2
+http://localhost:8100/currency-converter-feign/from/USD/to/INR/quantity/2
+http://localhost:8765/currency-exchange-service/currency-exchange/from/USD/to/INR
+
+
+
+#Installing RabitMQ for Messaging queue------>
+-> Install Earlang and RabMQ from below url::::https://github.com/criskrzysiu/in28minutes-spring-microservices#installing-tools
+->Down load zipkin jar and start zipkin server ->cmd->java -jar zipkin-server-2.12.7-exec.jar
+-> hit ::> http://127.0.0.1:9411/zipkin/
+->Run RabbitMq and start zipkin=>>  RABBIT_URI=amqp://localhost java -jar zipkin-server-2.12.7-exec.jar
